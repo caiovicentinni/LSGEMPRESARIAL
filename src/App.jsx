@@ -30,19 +30,19 @@ const Navbar = () => {
   const links = [['Serviços', '#servicos'], ['Processo', '#processo'], ['FAQ', '#faq'], ['Contato', '#contato']];
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-4 px-4">
-      <div className={`hidden md:flex items-center justify-between w-full max-w-5xl px-6 py-3 rounded-full transition-all duration-500 ${scrolled ? 'bg-white/90 backdrop-blur-xl border border-border shadow-lg shadow-black/5' : 'bg-dark/30 backdrop-blur-sm'}`}>
+      <div className={`hidden md:flex items-center justify-between w-full max-w-5xl px-6 py-3 rounded-full transition-all duration-500 ${scrolled ? 'bg-white/90 backdrop-blur-xl border border-border shadow-lg shadow-black/5' : 'bg-white/10 backdrop-blur-md border border-white/10'}`}>
         <a href="#"><LSGLogo height={28} dark={scrolled} /></a>
         <div className="flex items-center gap-8">
           {links.map(([l, h]) => (
-            <a key={h} href={h} className={`font-mono text-[0.58rem] uppercase tracking-[0.2em] transition-colors ${scrolled ? 'text-ink/50 hover:text-teal' : 'text-ivory/55 hover:text-teal'}`}>{l}</a>
+            <a key={h} href={h} className={`font-mono text-[0.58rem] uppercase tracking-[0.2em] transition-colors ${scrolled ? 'text-ink/55 hover:text-teal' : 'text-white/75 hover:text-teal'}`}>{l}</a>
           ))}
         </div>
-        <a href="#contato" className={`btn-primary rounded-full px-5 py-2.5 text-[0.65rem] ${scrolled ? '' : 'bg-white text-ink hover:bg-teal hover:text-white'}`}>
+        <a href="#contato" className="btn-primary rounded-full px-5 py-2.5 text-[0.65rem]">
           <span className="btn-slide rounded-full" /><span className="relative z-10 flex items-center gap-1.5">Diagnóstico Grátis <ArrowUpRight size={12} /></span>
         </a>
       </div>
       {/* mobile */}
-      <div className={`md:hidden flex w-full items-center justify-between px-4 py-3 rounded-full transition-all duration-500 ${scrolled ? 'bg-white/90 backdrop-blur-xl border border-border shadow-md' : 'bg-dark/20 backdrop-blur-sm'}`}>
+      <div className={`md:hidden flex w-full items-center justify-between px-4 py-3 rounded-full transition-all duration-500 ${scrolled ? 'bg-white/90 backdrop-blur-xl border border-border shadow-md' : 'bg-white/10 backdrop-blur-md border border-white/10'}`}>
         <a href="#"><LSGLogo height={24} dark={scrolled} /></a>
         <button onClick={() => setOpen(!open)} className="p-2 flex flex-col gap-1 items-center">
           {[0, 1, 2].map(i => <span key={i} className={`w-5 h-px transition-all ${scrolled ? 'bg-ink' : 'bg-ivory'} ${open && i === 0 ? 'rotate-45 translate-y-[5px]' : ''} ${open && i === 1 ? 'opacity-0' : ''} ${open && i === 2 ? '-rotate-45 -translate-y-[5px]' : ''}`} />)}
@@ -73,61 +73,68 @@ const Ticker = () => (
 // ── HERO — dark section ────────────────────────────────────────────────────
 const Hero = () => {
   const ref = useRef(null);
+  // Parallax only — content animated via CSS .hero-el class
   useGSAP(() => {
     const ctx = gsap.context(() => {
-      gsap.timeline({ delay: 0.25 })
-        .from('.h-badge', { y: 18, opacity: 0, duration: 0.7, ease: 'power3.out' })
-        .from('.h-l1', { y: 90, opacity: 0, duration: 1.1, ease: 'power3.out' }, '-=0.4')
-        .from('.h-l2', { y: 60, opacity: 0, duration: 0.9, ease: 'power3.out' }, '-=0.75')
-        .from('.h-l3', { y: 90, opacity: 0, duration: 1.2, ease: 'power3.out' }, '-=0.8')
-        .from('.h-sub', { y: 22, opacity: 0, duration: 0.8, ease: 'power3.out' }, '-=0.55')
-        .from('.h-cta', { y: 18, opacity: 0, duration: 0.7, ease: 'power3.out' }, '-=0.5')
-        .from('.h-stat', { y: 14, opacity: 0, stagger: 0.08, duration: 0.5, ease: 'power3.out' }, '-=0.35');
       gsap.to('.hero-img', { yPercent: 20, ease: 'none', scrollTrigger: { trigger: ref.current, start: 'top top', end: 'bottom top', scrub: true } });
     }, ref);
     return () => ctx.revert();
   }, { scope: ref });
 
+
   return (
-    <section ref={ref} className="relative min-h-[100dvh] flex flex-col overflow-hidden bg-dark">
+    <section ref={ref} className="relative min-h-[100dvh] flex flex-col overflow-hidden" style={{ backgroundColor: '#111318' }}>
       <div className="absolute inset-0 z-0">
-        <img className="hero-img w-full h-[115%] object-cover opacity-15"
+        <img className="hero-img w-full h-[115%] object-cover" style={{ opacity: 0.18 }}
           src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=2070&auto=format&fit=crop"
           alt="Financial precision" />
-        <div className="absolute inset-0 bg-gradient-to-t from-dark via-dark/80 to-dark/40" />
-        <div className="absolute inset-0 bg-gradient-to-r from-dark/70 to-transparent" />
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, #111318 15%, rgba(17,19,24,0.8) 55%, rgba(17,19,24,0.35) 100%)' }} />
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(17,19,24,0.65), transparent)' }} />
       </div>
-      <div className="absolute inset-0 z-0" style={{ backgroundImage: 'radial-gradient(circle at 70% 50%, rgba(0,196,154,0.04) 0%, transparent 60%)' }} />
+      <div className="absolute inset-0 z-0" style={{ backgroundImage: 'linear-gradient(rgba(0,196,154,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(0,196,154,0.025) 1px,transparent 1px)', backgroundSize: '60px 60px' }} />
 
       <div className="relative z-10 flex flex-col justify-end flex-1 pb-16 md:pb-24 pt-28 px-5 md:px-12 max-w-screen-xl mx-auto w-full">
-        <div className="h-badge mb-8">
-          <div className="inline-flex items-center gap-2 border border-teal/30 bg-teal/8 px-3 py-1.5 rounded-full">
+        {/* All elements get CSS hero-el animation  — no GSAP dependency */}
+        <div className="hero-el" style={{ animationDelay: '0s' }}>
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-8" style={{ border: '1px solid rgba(0,196,154,0.3)', background: 'rgba(0,196,154,0.1)' }}>
             <span className="w-1.5 h-1.5 rounded-full bg-teal animate-pulse" />
             <span className="font-mono text-[0.58rem] uppercase tracking-[0.2em] text-teal">BPO Financeiro Premium</span>
           </div>
         </div>
 
-        <div className="overflow-hidden"><div className="h-l1 font-sans font-black uppercase tracking-tighter text-ivory leading-none" style={{ fontSize: 'clamp(2.5rem,7.5vw,9rem)' }}>SEU FINANCEIRO</div></div>
-        <div className="overflow-hidden my-1.5"><div className="h-l2 font-sans font-light uppercase tracking-[0.06em] text-ivory/35" style={{ fontSize: 'clamp(1rem,2.2vw,2.5rem)' }}>encontra a</div></div>
-        <div className="overflow-hidden mb-8 md:mb-10"><div className="h-l3 font-display italic text-teal" style={{ fontSize: 'clamp(3rem,9.5vw,12rem)', lineHeight: '0.9' }}>Clareza.</div></div>
+        <div className="overflow-hidden hero-el" style={{ animationDelay: '0.2s' }}>
+          <div className="font-sans font-black uppercase tracking-tighter" style={{ color: '#FFFFFF', fontSize: 'clamp(2.5rem,7.5vw,9rem)', lineHeight: '0.92' }}>SEU FINANCEIRO</div>
+        </div>
+        <div className="overflow-hidden hero-el" style={{ animationDelay: '0.35s' }}>
+          <div className="font-sans font-light uppercase tracking-[0.06em] my-1.5" style={{ color: 'rgba(255,255,255,0.4)', fontSize: 'clamp(1rem,2.2vw,2.5rem)' }}>encontra a</div>
+        </div>
+        <div className="overflow-hidden hero-el" style={{ animationDelay: '0.5s' }}>
+          <div className="font-display italic mb-8 md:mb-10" style={{ color: '#00C49A', fontSize: 'clamp(3rem,9.5vw,12rem)', lineHeight: '0.9' }}>Clareza.</div>
+        </div>
 
-        <div className="flex flex-col md:flex-row gap-6 md:gap-12 md:items-end">
-          <p className="h-sub text-ivory/55 text-sm md:text-base font-light leading-relaxed max-w-xs border-l-2 border-teal/30 pl-4">
+        <div className="hero-el flex flex-col md:flex-row gap-6 md:gap-12 md:items-end" style={{ animationDelay: '0.65s' }}>
+          <p className="text-sm md:text-base font-light leading-relaxed max-w-xs pl-4" style={{ color: 'rgba(255,255,255,0.55)', borderLeft: '2px solid rgba(0,196,154,0.35)' }}>
             Terceirize seu departamento financeiro — sem CLT, sem encargos, sem incêndio todo fim de mês.
           </p>
-          <div className="h-cta flex flex-col sm:flex-row gap-3">
-            <a href="#contato" className="btn-primary-dark rounded-full px-7 py-4 text-[0.7rem]"><span className="btn-slide rounded-full" /><span className="relative z-10 flex items-center gap-2">Solicitar Diagnóstico <ArrowRight size={14} /></span></a>
+          <div className="flex flex-col sm:flex-row gap-3">
+            <a href="#contato" className="btn-primary rounded-full px-7 py-4 text-[0.7rem]"><span className="btn-slide rounded-full" /><span className="relative z-10 flex items-center gap-2">Solicitar Diagnóstico <ArrowRight size={14} /></span></a>
             <a href="#processo" className="btn-ghost-dark rounded-full px-7 py-4 text-[0.7rem]">Como Funciona</a>
           </div>
         </div>
 
-        <div className="mt-10 pt-8 border-t border-ivory/[0.06] grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div className="hero-el mt-10 pt-8 grid grid-cols-2 md:grid-cols-4 gap-6" style={{ animationDelay: '0.8s', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
           {[{ n: '100%', l: 'Doc. pronta pro contador' }, { n: 'Zero', l: 'Encargos trabalhistas' }, { n: '+4', l: 'Módulos inclusos' }, { n: 'Bônus', l: 'Depto. Pessoal incluso' }].map((s, i) => (
-            <div key={i} className="h-stat"><div className="font-mono font-bold text-xl md:text-2xl text-teal">{s.n}</div><div className="font-mono text-[0.5rem] uppercase tracking-[0.15em] text-ivory/35 mt-1 leading-tight">{s.l}</div></div>
+            <div key={i}>
+              <div className="font-mono font-bold text-xl md:text-2xl" style={{ color: '#00C49A' }}>{s.n}</div>
+              <div className="font-mono mt-1 leading-tight" style={{ color: 'rgba(255,255,255,0.3)', fontSize: '0.5rem', textTransform: 'uppercase', letterSpacing: '0.15em' }}>{s.l}</div>
+            </div>
           ))}
         </div>
       </div>
     </section>
+  );
+};
+
   );
 };
 
