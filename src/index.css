@@ -81,37 +81,46 @@
     100% { top: 100%; }
   }
 
-  /* ── BRUTAL BUTTON ── */
-  .btn-brutal {
+  /* ── MAGNETIC BUTTON (GEMINI.MD spec) ── */
+  .btn-magnetic {
     position: relative;
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 0.5rem;
     font-family: 'Inter', sans-serif;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.07em;
     font-size: 0.72rem;
     background: var(--teal);
     color: var(--abyss);
-    padding: 1rem 2rem;
+    padding: 0.9rem 1.8rem;
     border: none;
     outline: none;
     cursor: pointer;
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
-    box-shadow: 5px 5px 0px var(--ivory-ghost);
-    will-change: transform;
+    overflow: hidden;
+    transition: transform 0.35s cubic-bezier(0.25,0.46,0.45,0.94), box-shadow 0.35s ease;
     white-space: nowrap;
+    text-decoration: none;
   }
 
-  .btn-brutal:hover {
-    transform: translate(-3px, -3px);
-    box-shadow: 8px 8px 0px var(--teal-glow);
+  .btn-magnetic:hover {
+    transform: scale(1.03);
+    box-shadow: 0 12px 32px rgba(0,212,170,0.25);
   }
 
-  .btn-brutal:active {
-    transform: translate(2px, 2px);
-    box-shadow: 2px 2px 0px var(--teal-glow);
+  .btn-bg {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.15);
+    transform: translateX(-101%);
+    transition: transform 0.35s cubic-bezier(0.25,0.46,0.45,0.94);
+    pointer-events: none;
+  }
+
+  .btn-magnetic:hover .btn-bg {
+    transform: translateX(0);
   }
 
   /* ── GHOST BUTTON ── */
@@ -119,24 +128,28 @@
     position: relative;
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 0.5rem;
     font-family: 'Inter', sans-serif;
     font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.07em;
     font-size: 0.72rem;
     background: transparent;
     color: var(--ivory);
-    padding: 1rem 2rem;
-    border: 1px solid rgba(238,234,227,0.2);
+    padding: 0.9rem 1.8rem;
+    border: 1px solid rgba(238,234,227,0.18);
     cursor: pointer;
-    transition: all 0.2s ease;
+    overflow: hidden;
+    transition: transform 0.3s cubic-bezier(0.25,0.46,0.45,0.94), border-color 0.25s ease, color 0.25s ease;
     white-space: nowrap;
+    text-decoration: none;
   }
 
   .btn-ghost:hover {
     border-color: var(--teal);
     color: var(--teal);
+    transform: translateY(-1px);
   }
 
   /* ── TAG ── */
