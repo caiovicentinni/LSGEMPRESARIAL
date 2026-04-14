@@ -1,0 +1,277 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&family=DM+Serif+Display:ital@0;1&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --abyss: #000E24;
+    --abyss-deep: #00070F;
+    --teal: #5BC0BE;
+    --teal-dim: rgba(91,192,190,0.12);
+    --teal-glow: rgba(91,192,190,0.4);
+    --ivory: #E8E4DD;
+    --ivory-dim: rgba(232,228,221,0.5);
+    --ivory-ghost: rgba(232,228,221,0.12);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+
+  body {
+    @apply antialiased;
+    background-color: var(--abyss);
+    color: var(--ivory);
+    font-family: 'Space Grotesk', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* Global grain texture */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  ::selection {
+    background-color: var(--teal);
+    color: var(--abyss);
+  }
+}
+
+@layer components {
+
+  /* ── TYPOGRAPHY ── */
+  .font-display {
+    font-family: 'DM Serif Display', serif;
+  }
+
+  .font-mono-custom {
+    font-family: 'Space Mono', monospace;
+  }
+
+  .font-sans-custom {
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  /* ── BRUTAL HEADLINE ── */
+  .headline-brutal {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+  }
+
+  /* ── SCAN LINE ANIMATION ── */
+  .scan-line {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .scan-line::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--teal), transparent);
+    animation: scanMove 3s linear infinite;
+    opacity: 0.6;
+  }
+
+  @keyframes scanMove {
+    0% { top: -2px; }
+    100% { top: 100%; }
+  }
+
+  /* ── NEON PULSE ── */
+  .neon-pulse {
+    animation: neonPulse 2s ease-in-out infinite alternate;
+  }
+
+  @keyframes neonPulse {
+    from { box-shadow: 0 0 4px var(--teal-glow), 0 0 8px var(--teal-glow); }
+    to   { box-shadow: 0 0 12px var(--teal-glow), 0 0 24px var(--teal-glow); }
+  }
+
+  /* ── BRUTAL BUTTON ── */
+  .btn-brutal {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.8rem;
+    background: var(--teal);
+    color: var(--abyss);
+    padding: 1.2rem 2.5rem;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    box-shadow: 6px 6px 0px var(--ivory-ghost);
+    will-change: transform;
+  }
+
+  .btn-brutal:hover {
+    transform: translate(-4px, -4px);
+    box-shadow: 10px 10px 0px var(--teal-glow);
+  }
+
+  .btn-brutal:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px var(--teal-glow);
+  }
+
+  /* ── GHOST BUTTON ── */
+  .btn-ghost {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: 'Space Mono', monospace;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 0.75rem;
+    background: transparent;
+    color: var(--ivory);
+    padding: 1.2rem 2.5rem;
+    border: 1px solid rgba(232,228,221,0.2);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .btn-ghost:hover {
+    border-color: var(--teal);
+    color: var(--teal);
+  }
+
+  /* ── SCORE TAG ── */
+  .tag-mono {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--ivory);
+    opacity: 0.4;
+  }
+
+  /* ── TEAL LINE SEPARATOR ── */
+  .line-teal {
+    height: 1px;
+    background: linear-gradient(90deg, var(--teal), transparent);
+  }
+
+  /* ── CARD BRUTALIST ── */
+  .card-brutal {
+    background: var(--abyss-deep);
+    border: 1px solid rgba(91,192,190,0.12);
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s ease, transform 0.3s ease;
+  }
+
+  .card-brutal::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 0%;
+    background: var(--teal);
+    transition: height 0.4s ease;
+  }
+
+  .card-brutal:hover::before {
+    height: 100%;
+  }
+
+  .card-brutal:hover {
+    border-color: rgba(91,192,190,0.35);
+    transform: translateY(-2px);
+  }
+
+  /* ── TYPEWRITER CURSOR ── */
+  .tw-cursor {
+    display: inline-block;
+    width: 8px;
+    height: 1.1em;
+    background: var(--teal);
+    margin-left: 2px;
+    animation: blink 0.8s step-end infinite;
+    vertical-align: text-bottom;
+  }
+
+  @keyframes blink {
+    50% { opacity: 0; }
+  }
+
+  /* ── SCROLLBAR HIDE ── */
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+  /* ── NUMBER REVEAL ── */
+  .num-reveal {
+    font-family: 'Space Mono', monospace;
+    font-size: clamp(4rem, 10vw, 8rem);
+    font-weight: 700;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(91,192,190,0.3);
+    line-height: 1;
+  }
+
+  /* ── SECTION LABEL ── */
+  .section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--teal);
+    opacity: 0.8;
+    margin-bottom: 2rem;
+  }
+
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 2rem;
+    height: 1px;
+    background: var(--teal);
+    flex-shrink: 0;
+  }
+}
+
+/* ── MARQUEE ── */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 20s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
