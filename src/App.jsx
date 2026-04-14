@@ -75,7 +75,7 @@ const Ticker = () => (
         <span
           key={i}
           className={`px-5 font-mono text-[0.6rem] uppercase tracking-[0.18em] whitespace-nowrap ${
-            t === '///' ? 'text-teal/30' : 'text-ivory/30'
+            t === '///' ? 'text-teal/30' : 'text-ivory/60'
           }`}
         >
           {t}
@@ -112,7 +112,7 @@ const Navbar = () => {
         <div className="hidden md:flex items-center gap-8">
           {[['Soluções','solucoes'], ['Método','metodo'], ['Manifesto','filosofia']].map(([l, id]) => (
             <a key={id} href={`#${id}`}
-              className="font-mono text-[0.6rem] uppercase tracking-[0.18em] text-ivory/40 hover:text-teal transition-colors duration-200">
+              className="font-mono text-[0.6rem] uppercase tracking-[0.18em] text-ivory/70 hover:text-teal transition-colors duration-200">
               {l}
             </a>
           ))}
@@ -202,7 +202,7 @@ const Hero = () => {
             <span className="w-1.5 h-1.5 bg-teal animate-pulse" />
             <span className="font-mono text-[0.6rem] uppercase tracking-[0.2em] text-teal">BPO Financeiro Premium</span>
           </div>
-          <span className="hidden sm:block font-mono text-[0.6rem] text-ivory/20 tracking-[0.15em] uppercase">Excl. R$30K+/mês</span>
+          <span className="hidden sm:block font-mono text-[0.6rem] text-ivory/50 tracking-[0.15em] uppercase">Excl. R$30K+/mês</span>
         </div>
 
         {/* Headline */}
@@ -226,7 +226,7 @@ const Hero = () => {
             </div>
           </div>
           <div className="overflow-hidden">
-            <div className="font-display italic text-ivory/20 leading-[1.0]"
+            <div className="font-display italic text-ivory/50 leading-[1.0]"
               style={{ fontSize: 'clamp(2.4rem, 7vw, 7.5rem)' }}>
               Previsibilidade.
             </div>
@@ -258,7 +258,7 @@ const Hero = () => {
           ].map((s, i) => (
             <div key={i} className="hero-stat">
               <div className="font-mono font-bold text-xl md:text-3xl text-ivory tracking-tighter">{s.num}</div>
-              <div className="font-mono text-[0.55rem] uppercase tracking-[0.18em] text-ivory/25 mt-1">{s.label}</div>
+              <div className="font-mono text-[0.55rem] uppercase tracking-[0.18em] text-ivory/55 mt-1">{s.label}</div>
             </div>
           ))}
         </div>
@@ -317,7 +317,7 @@ const LiveFeed = () => {
       </div>
       <div className="flex flex-col gap-1.5 flex-1">
         {lines.map((l, i) => (
-          <div key={i} className={`font-mono text-[0.65rem] leading-relaxed ${i === lines.length - 1 ? 'text-teal' : 'text-ivory/20'}`}>
+          <div key={i} className={`font-mono text-[0.65rem] leading-relaxed ${i === lines.length - 1 ? 'text-teal' : 'text-ivory/50'}`}>
             {l}{i === lines.length - 1 && <span className="tw-cursor" />}
           </div>
         ))}
@@ -390,7 +390,7 @@ const Features = () => {
               Segurança Absoluta
             </span>
           </h2>
-          <p className="font-mono text-xs text-ivory/25 leading-relaxed max-w-xs md:text-right tracking-wide">
+          <p className="font-mono text-xs text-ivory/55 leading-relaxed max-w-xs md:text-right tracking-wide">
             Transformamos seu centre de custo invisível em um painel de controle preditivo.
           </p>
         </div>
@@ -406,7 +406,7 @@ const Features = () => {
             </div>
             <c.icon size={18} className="text-teal mb-3 opacity-60" />
             <h3 className="font-sans font-bold text-base text-ivory mb-3 leading-snug">{c.title}</h3>
-            <p className="text-ivory/35 text-sm leading-relaxed mb-6 font-light">{c.desc}</p>
+            <p className="text-ivory/65 text-sm leading-relaxed mb-6 font-light">{c.desc}</p>
             <div className="flex flex-wrap gap-1.5 mt-auto pt-4 border-t border-teal/10">
               {c.tags.map(t => (
                 <span key={t} className="font-mono text-[0.55rem] uppercase tracking-[0.12em] text-teal/45 border border-teal/15 px-2 py-1">
@@ -461,7 +461,7 @@ const Philosophy = () => {
         <span className="section-label">Manifesto</span>
 
         <div className="phil-a mb-12 md:mb-20">
-          <p className="font-sans text-lg md:text-2xl text-ivory/20 max-w-2xl leading-relaxed font-light">
+          <p className="font-sans text-lg md:text-2xl text-ivory/50 max-w-2xl leading-relaxed font-light">
             A maioria do mercado foca em observar o retrovisor: apurar impostos atrasados e registrar o que já aconteceu.
           </p>
         </div>
@@ -547,7 +547,7 @@ const Protocol = () => {
                   <h3 className="font-sans font-bold text-sm md:text-base uppercase tracking-wide text-ivory mb-2">
                     {s.title}
                   </h3>
-                  <p className="font-sans font-light text-ivory/35 text-sm leading-relaxed">{s.desc}</p>
+                  <p className="font-sans font-light text-ivory/65 text-sm leading-relaxed">{s.desc}</p>
                 </div>
                 <CheckCircle size={14} className={`flex-shrink-0 mt-1 transition-colors ${active === i ? 'text-teal' : 'text-ivory/10'}`} />
               </div>
@@ -558,14 +558,14 @@ const Protocol = () => {
         {/* Info panel */}
         <div className="md:col-span-5">
           <div className="card-brutal border-teal/15 sticky top-28">
-            <div className="font-mono text-[0.6rem] uppercase tracking-[0.18em] text-ivory/20 mb-5">
+            <div className="font-mono text-[0.6rem] uppercase tracking-[0.18em] text-ivory/50 mb-5">
               Status / {steps[active]?.num}
             </div>
             <div className="flex flex-col gap-3 mb-8">
               {steps.map((s, i) => (
                 <div key={i} className={`flex items-center gap-3 transition-all duration-300 ${i === active ? 'opacity-100' : 'opacity-20'}`}>
                   <div className={`w-1.5 h-1.5 flex-shrink-0 ${i === active ? 'bg-teal' : 'bg-ivory/20'}`} />
-                  <span className={`font-mono text-[0.65rem] tracking-wide ${i === active ? 'text-teal' : 'text-ivory/40'}`}>
+                  <span className={`font-mono text-[0.65rem] tracking-wide ${i === active ? 'text-teal' : 'text-ivory/70'}`}>
                     {s.title}
                   </span>
                 </div>
@@ -625,7 +625,7 @@ const CTASection = () => {
           R$ 30.000/MÊS?
         </h2>
 
-        <p className="font-sans font-light text-ivory/35 text-sm md:text-base max-w-lg mb-10 leading-relaxed">
+        <p className="font-sans font-light text-ivory/65 text-sm md:text-base max-w-lg mb-10 leading-relaxed">
           Não limite o crescimento apagando incêndios do fluxo de caixa. Marque uma reunião de diagnóstico e inicie a terceirização.
         </p>
 
@@ -654,7 +654,7 @@ const Footer = () => (
           <div className="mb-5">
             <LSGLogo height={30} />
           </div>
-          <p className="font-mono text-xs text-ivory/20 leading-relaxed max-w-xs tracking-wide">
+          <p className="font-mono text-xs text-ivory/50 leading-relaxed max-w-xs tracking-wide">
             Elevando departamentos financeiros ao padrão enterprise. Menos burocracia. Mais escala.
           </p>
         </div>
@@ -664,7 +664,7 @@ const Footer = () => (
           <ul className="flex flex-col gap-3">
             {['BPO Financeiro', 'Contabilidade Digital', 'Software de Gestão', 'Analista Dedicado'].map(l => (
               <li key={l}>
-                <a href="#" className="font-sans text-sm text-ivory/25 hover:text-teal transition-colors">{l}</a>
+                <a href="#" className="font-sans text-sm text-ivory/55 hover:text-teal transition-colors">{l}</a>
               </li>
             ))}
           </ul>
@@ -672,7 +672,7 @@ const Footer = () => (
 
         <div className="md:col-span-4">
           <h4 className="font-mono text-[0.6rem] uppercase tracking-[0.18em] text-teal/50 mb-5">Contato</h4>
-          <div className="flex flex-col gap-3 font-mono text-xs text-ivory/20 tracking-wide">
+          <div className="flex flex-col gap-3 font-mono text-xs text-ivory/50 tracking-wide">
             <span>contato@lsgsolucoes.com</span>
             <span>Recife, PE — Brasil</span>
           </div>
@@ -687,7 +687,7 @@ const Footer = () => (
         </p>
         <div className="flex items-center gap-2.5">
           <div className="w-1.5 h-1.5 bg-green-500 animate-pulse" />
-          <span className="font-mono text-[0.55rem] uppercase tracking-[0.18em] text-ivory/20">Sistema Operacional</span>
+          <span className="font-mono text-[0.55rem] uppercase tracking-[0.18em] text-ivory/50">Sistema Operacional</span>
         </div>
       </div>
     </div>
