@@ -7,15 +7,15 @@ export default {
   theme: {
     extend: {
       colors: {
-        abyss:    '#000E24',
-        deep:     '#00070F',
-        teal:     '#5BC0BE',
-        ivory:    '#E8E4DD',
+        abyss:    '#111318',
+        deep:     '#1C1F27',
+        teal:     '#00D4AA',
+        ivory:    '#EEEAE3',
       },
       fontFamily: {
-        sans:    ['Space Grotesk', 'sans-serif'],
-        mono:    ['Space Mono', 'monospace'],
-        display: ['DM Serif Display', 'serif'],
+        sans:    ['Inter', 'sans-serif'],
+        mono:    ['JetBrains Mono', 'monospace'],
+        display: ['Playfair Display', 'serif'],
       },
       fontSize: {
         'hero': 'clamp(3.5rem, 10vw, 10rem)',

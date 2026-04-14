@@ -15,12 +15,12 @@ gsap.registerPlugin(ScrollTrigger);
 // ─────────────────────────────────────────────
 const LSGLogo = ({ height = 36 }) => (
   <svg height={height} viewBox="0 0 220 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="LSG Empresarial">
-    <polyline points="4,38 4,10 28,10" stroke="#5BC0BE" strokeWidth="3" strokeLinecap="square" strokeLinejoin="miter"/>
-    <polyline points="8,36 16,22 22,28 32,12" stroke="#5BC0BE" strokeWidth="2.5" strokeLinecap="square" strokeLinejoin="miter"/>
-    <polygon points="32,12 38,12 38,18" fill="#5BC0BE"/>
-    <line x1="50" y1="6" x2="50" y2="42" stroke="rgba(91,192,190,0.25)" strokeWidth="1"/>
-    <text x="60" y="36" fontFamily="'Space Grotesk', sans-serif" fontWeight="900" fontSize="30" letterSpacing="-1" fill="#E8E4DD">LSG</text>
-    <text x="61" y="46" fontFamily="'Space Mono', monospace" fontWeight="400" fontSize="7.5" letterSpacing="3" fill="#5BC0BE" opacity="0.8">EMPRESARIAL</text>
+    <polyline points="4,38 4,10 28,10" stroke="#00D4AA" strokeWidth="3" strokeLinecap="square" strokeLinejoin="miter"/>
+    <polyline points="8,36 16,22 22,28 32,12" stroke="#00D4AA" strokeWidth="2.5" strokeLinecap="square" strokeLinejoin="miter"/>
+    <polygon points="32,12 38,12 38,18" fill="#00D4AA"/>
+    <line x1="50" y1="6" x2="50" y2="42" stroke="rgba(0,212,170,0.2)" strokeWidth="1"/>
+    <text x="60" y="36" fontFamily="'Inter', sans-serif" fontWeight="900" fontSize="28" letterSpacing="-1" fill="#EEEAE3">LSG</text>
+    <text x="61" y="46" fontFamily="'JetBrains Mono', monospace" fontWeight="400" fontSize="7" letterSpacing="3.5" fill="#00D4AA" opacity="0.75">EMPRESARIAL</text>
   </svg>
 );
 
