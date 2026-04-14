@@ -7,10 +7,15 @@ export default {
   theme: {
     extend: {
       colors: {
-        abyss:    '#111318',
-        deep:     '#1C1F27',
-        teal:     '#00D4AA',
-        ivory:    '#EEEAE3',
+        canvas:  '#F4F2ED',   /* cream main background */
+        surface: '#FFFFFF',   /* white card surface */
+        border:  '#E5E1D8',   /* subtle borders */
+        dark:    '#111318',   /* dark sections */
+        darker:  '#0D1018',   /* footer deep */
+        teal:    '#00C49A',   /* accent */
+        ink:     '#111318',   /* primary text */
+        muted:   '#6B7072',   /* secondary text */
+        ivory:   '#EEEAE3',   /* text on dark */
       },
       fontFamily: {
         sans:    ['Inter', 'sans-serif'],
